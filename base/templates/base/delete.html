@@ -1,0 +1,9 @@
+{% extends 'main.html' %}
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <p> Are u sure to dlt "{{obj}}" task? </p>
+    <a href="{{ request.META.HTTP_REFERER }}">cancel</a>
+    <input type="submit" value="confirm"/>
+</form>
+{%endblock content %}

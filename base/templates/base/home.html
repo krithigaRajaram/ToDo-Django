@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>todo</h1>
+<div>
+    <a href="{% url 'addtask' %}">Add task</a>
+    
+    <p>@ {{request.user}}</p>
+    <!--<p>Number of tasks pending : {{listcount}}</p>-->
+<div>
+{% for List in Lists %}
+<div>
+    {% if request.user == List.user %}
+   
+    <a href="{% url 'updatetask' List.id %}">edit</a>
+    <a href="{% url 'deletetask' List.id %}">completed</a>
+    
+    <p>{{List.content}}</p>
+    <p>{{List.status}}</p>
+    {% endif %}
+</div>
+{% endfor %}
+</div>
+</div>
+{% endblock content %}
