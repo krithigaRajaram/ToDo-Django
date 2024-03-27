@@ -1,29 +1,28 @@
- {% extends 'main.html' %}
- {% block content %}
- {% if page == 'login' %}
-<div>
+{% extends 'main.html' %}
+{% block content %}
+{% if page == 'login' %}
+<div class="box-signup">
     <form action="" method="POST">
         {% csrf_token %}
-        
-        <input type="text" name="username" placeholder="username"/>
-        <input type="password" name="password" placeholder="password"/>
-        <input type="submit" value="login"/>
+        <h1>Login</h1>
+        <input type="text" name="username" placeholder="Enter username"/>
+        <input type="password" name="password" placeholder="Enter password"/>
+        <input type="submit" value="Login"/>
     </form>
-        <p>new user?</p>
-        <a href="{% url 'signup' %}">signup</a>
-    
+        <p>New user?
+        <a href="{% url 'signup' %}">Sign-up</a>
+    </p>
 </div>
 {% else %}
-<div>
+<div class="box-signup">
     <form action="" method="POST">
         {% csrf_token %}
-        
             {{form.as_p}}
-        <input type="submit" value="signup"/>
+        <input type="submit" value="Sign-up"/>
     </form>
-        <p>existing customer?</p> 
-        <a href="{% url 'login' %}">login</a>
-    
+        <p>Already have an account?
+        <a href="{% url 'login' %}">Login</a>
+    </p> 
 </div>
 {% endif %}
- {% endblock content %}
+{% endblock content %}

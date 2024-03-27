@@ -4,6 +4,6 @@ from .models import List
 class ListForm(ModelForm):
     class Meta:
         model=List
-        fields=['content','status']
+        fields=['content']
 
     

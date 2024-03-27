@@ -1,0 +1,197 @@
+.task-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task {
+    width: 400px; /* Set the desired width */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task .content {
+    flex: 1; /* Let the content take up all available space */
+    margin-right: 10px; /* Add margin between content and buttons */
+}
+
+.task form {
+    display: flex;
+}
+
+.task .edit-btn,
+.task .complete-btn {
+    padding: 5px 10px;
+    background-color: #466c6c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.task .edit-btn:hover,
+.task .complete-btn:hover {
+    background-color: #598888;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}
+
+.add-task-form {
+    display: flex;
+    align-items: center;
+}
+
+.add-task-form input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.add-task-form button {
+    padding: 5px 10px;
+    background-color: #466c6c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.add-task-form button:hover {
+    background-color: #598888;
+}
+
+/* Reset default browser styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the navbar */
+.navbar {
+    background-color: #466c6c;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* Style the logo */
+.logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+/* Style the navigation links */
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/* Style the messages */
+.messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px;
+}
+
+.messages li {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f1f1f1;
+    border-left: 4px solid #333;
+}
+
+/* Style the main content area */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav {
+        margin-top: 10px;
+    }
+
+    .nav a {
+        margin: 0;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+}
+
+/* Center align the box */
+.box-signup {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Style the form inputs */
+.box-signup input[type="text"],
+.box-signup input[type="password"]
+ {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.box-signup input[type="submit"]
+{
+    width: 80%;
+    margin-left: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Style the links */
+.box-signup a {
+    text-decoration: none;
+    color: #565758;
+}
+.box-signup h1{
+    text-align: center;
+}
+
+/* Style the paragraph */
+.box-signup p {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+    .box-signup {
+        width: 90%;
+    }
+}

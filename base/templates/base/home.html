@@ -1,24 +1,30 @@
 {% extends 'main.html' %}
 {% block content %}
-<h1>todo</h1>
-<div>
-    <a href="{% url 'addtask' %}">Add task</a>
-    
-    <p>@ {{request.user}}</p>
-    <!--<p>Number of tasks pending : {{listcount}}</p>-->
-<div>
-{% for List in Lists %}
-<div>
-    {% if request.user == List.user %}
-   
-    <a href="{% url 'updatetask' List.id %}">edit</a>
-    <a href="{% url 'deletetask' List.id %}">completed</a>
-    
-    <p>{{List.content}}</p>
-    <p>{{List.status}}</p>
-    {% endif %}
+
+<div class="task-container">
+    <div>
+        {% for List in Lists %}
+        <div>
+            {% if request.user == List.user %}
+            <div class="task">
+                <p class="content">{{ List.content }}</p>
+                <form action="{% url 'deletetask' List.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="complete-btn">Completed</button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
 </div>
-{% endfor %}
+
+<div class="footer">
+    <form action="{% url 'addtask' %}" method="POST" class="add-task-form">
+        {% csrf_token %}
+        <input type="text" name="content" placeholder="Enter task content" required>
+        <button type="submit" class="add-task-btn">Add Task</button>
+    </form>
 </div>
-</div>
+
 {% endblock content %}

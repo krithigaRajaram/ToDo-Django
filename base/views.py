@@ -6,7 +6,11 @@ from django.contrib.auth.models import User
 from .forms import ListForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
-# Create your views here.
+from .serializers import ListSerializer
+from rest_framework.decorators import api_view,permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework import status
 
 def loginPage(request):
     page='login'
@@ -30,7 +34,7 @@ def loginPage(request):
 
 def logoutPage(request):
     logout(request)
-    return redirect('home')
+    return redirect('login')
 
 def registerPage(request):
     page='register'
@@ -55,29 +59,19 @@ def home(request):
     context={'Lists':Lists,'listcount':listcount}
     return render(request,'base/home.html',context)
 
-@login_required(login_url='login')
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def addtask(request):
-    form=ListForm()
-    if request.method == "POST":
-        form=ListForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
+    serializer = ListSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save(user=request.user)
+        return redirect('home')
+    else:
+        return redirect('login')
 
-    context={'form':form}
-    return render(request,'base/form.html',context)
 
-def updatetask(request,pk):
-    llist=List.objects.get(id=pk)
-    form=ListForm(instance=llist)
-    if request.method == 'POST':
-        form=ListForm(request.POST,instance=llist)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
 
-    context={'form':form}
-    return render(request,'base/form.html',context)
 
 def deletetask(request,pk):
     llist=List.objects.get(id=pk)
